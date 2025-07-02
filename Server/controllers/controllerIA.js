@@ -1,19 +1,23 @@
-const { GoogleGenAI } = require("@google/genai");
+const { GoogleGenerativeAI } = require("@google/generative-ai");
 require("dotenv").config();
-const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+
+const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
 class ControllerIAGemini {
   static async explainWhiteboard(req, res, next) {
     try {
       const { imageBase64 } = req.body;
-
+      console.log(
+        "Received image data for explanation",
+        imageBase64 ? "with data" : "without data"
+      );
       if (!imageBase64) {
         return res.status(400).json({ message: "Image data is required." });
       }
 
-      const base64Data = imageBase64.replace(/^data:image\/\w+;base64,/, "");
+      const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
 
-      const model = ai.getGenerativeModel({ model: "gemini-2.0-flash" });
+      const base64Data = imageBase64.replace(/^data:image\/\w+;base64,/, "");
 
       const result = await model.generateContent([
         {
@@ -23,10 +27,10 @@ class ControllerIAGemini {
           },
         },
         {
-          text: "Here is the content of the digital whiteboard. Please explain the content in a language that is easy for students to understand.",
+          text: "Please explain the contents of this whiteboard in simple student-friendly language.",
         },
       ]);
-
+      console.log("AI response received:", result);
       const response = await result.response;
       const text = response.text();
 
