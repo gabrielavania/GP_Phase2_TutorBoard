@@ -10,6 +10,7 @@ const JoinRoom = () => {
 
   const handleJoin = () => {
     if (!code.trim()) return;
+    localStorage.setItem("roomCode", code);
     navigate(`/room/${code}`);
   };
 
