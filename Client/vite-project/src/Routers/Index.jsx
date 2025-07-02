@@ -8,6 +8,14 @@ const routers = createBrowserRouter([
   {
     path: "/",
     element: <HomePage />,
+    loader: () => {
+      if (localStorage.roomCode) {
+        return redirect(`/room/${localStorage.roomCode}`);
+      } else if (localStorage.userName && !localStorage.roomCode) {
+        return redirect("/room/create");
+      }
+      return null;
+    },
   },
   {
     path: "/room/create",
@@ -15,6 +23,8 @@ const routers = createBrowserRouter([
     loader: () => {
       if (!localStorage.userName) {
         return redirect("/");
+      } else if (localStorage.roomCode) {
+        return redirect(`/room/${localStorage.roomCode}`);
       }
       return null;
     },
@@ -25,6 +35,8 @@ const routers = createBrowserRouter([
     loader: () => {
       if (!localStorage.userName) {
         return redirect("/");
+      } else if (localStorage.roomCode) {
+        return redirect(`/room/${localStorage.roomCode}`);
       }
       return null;
     },

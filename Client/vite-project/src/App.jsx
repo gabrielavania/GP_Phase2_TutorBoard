@@ -1,10 +1,13 @@
 import { RouterProvider } from "react-router";
 import routers from "./Routers/Index.jsx";
+import { UserProvider } from "./Context/User-Context.jsx";
 
 function App() {
   return (
     <>
-      <RouterProvider router={routers} />
+      <UserProvider>
+        <RouterProvider router={routers} />
+      </UserProvider>
     </>
   );
 }
