@@ -76,7 +76,7 @@ const WhiteboardPage = () => {
   }, [roomCode, userName]);
 
   return (
-    <div className="flex flex-col h-screen bg-gray-100">
+    <div className="flex flex-col h-screen bg-gray-50">
       <Toolbox
         tool={currentTool}
         setTool={setCurrentTool}
@@ -86,6 +86,7 @@ const WhiteboardPage = () => {
         setStrokeWidth={setCurrentStrokeWidth}
         onClear={clearCanvas}
         onExplain={handleExplainAI}
+        roomCode={localStorage.getItem("roomCode")}
         roomCode={roomCode}
       />
       <Whiteboard
@@ -110,8 +111,7 @@ const WhiteboardPage = () => {
             <div className="mt-6 text-right">
               <button
                 onClick={() => setAiModalOpen(false)}
-                className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
-              >
+                className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition">
                 Close
               </button>
             </div>
