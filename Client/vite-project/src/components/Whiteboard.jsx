@@ -116,13 +116,13 @@ const Whiteboard = ({
     <div
       ref={containerRef}
       className="
-        flex-1
-        p-4
-        flex justify-center items-center
-        bg-gray-50
-        overflow-hidden
-      "
-    >
+      flex-1
+      p-4
+      flex justify-center items-center
+      bg-gray-50
+      overflow-hidden
+      relative
+    ">
       <Stage
         width={containerSize.width ? containerSize.width * 0.95 : 0}
         height={containerSize.height ? containerSize.height * 0.95 : 0}
@@ -137,8 +137,7 @@ const Whiteboard = ({
           bg-gradient-to-br from-white to-gray-50
           border border-gray-200
           rounded-lg shadow-xl
-        "
-      >
+        ">
         <Layer>
           {lines.map((shape, i) => {
             if (shape.tool === "brush" || shape.tool === "eraser") {
