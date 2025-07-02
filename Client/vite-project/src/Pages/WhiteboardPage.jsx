@@ -87,7 +87,6 @@ const WhiteboardPage = () => {
         onClear={clearCanvas}
         onExplain={handleExplainAI}
         roomCode={localStorage.getItem("roomCode")}
-        roomCode={roomCode}
       />
       <Whiteboard
         tool={currentTool}
