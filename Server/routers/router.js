@@ -1,8 +1,7 @@
 const express = require("express");
+const ControllerIAGemini = require("../controllers/controllerIA");
 const router = express.Router();
 
-router.get("/", (req, res) => {
-  res.send("Welcome to the Tutor Board API!");
-});
+router.post("/explain", ControllerIAGemini.explainWhiteboard);
 
 module.exports = router;
