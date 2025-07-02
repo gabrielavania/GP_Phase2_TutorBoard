@@ -30,7 +30,8 @@ const Toolbox = ({
       z-20
       flex-wrap
       px-6 py-3
-    ">
+    "
+    >
       <div className="flex items-center space-x-2">
         <div className="absolute top-5 left-4 text-white text-2xl font-semibold">
           TutorBoard
@@ -57,7 +58,8 @@ const Toolbox = ({
             focus:outline-none focus:ring-2 focus:ring-blue-300
             cursor-pointer
           `}
-          title="Brush">
+          title="Brush"
+        >
           <FaPaintBrush size={20} />
         </button>
 
@@ -74,7 +76,8 @@ const Toolbox = ({
             transition-colors duration-200
             focus:outline-none focus:ring-2 focus:ring-blue-300
           `}
-          title="Eraser">
+          title="Eraser"
+        >
           <FaEraser size={20} />
         </button>
 
@@ -91,7 +94,8 @@ const Toolbox = ({
             transition-colors duration-200
             focus:outline-none focus:ring-2 focus:ring-blue-300
           `}
-          title="Rectangle">
+          title="Rectangle"
+        >
           <FaRegSquare size={20} />
         </button>
 
@@ -108,7 +112,8 @@ const Toolbox = ({
             transition-colors duration-200
             focus:outline-none focus:ring-2 focus:ring-blue-300
           `}
-          title="Circle">
+          title="Circle"
+        >
           <FaRegCircle size={20} />
         </button>
       </div>
@@ -120,7 +125,8 @@ const Toolbox = ({
           text-white
           font-semibold
           text-lg
-        ">
+        "
+        >
           Color:
         </label>
         <input
@@ -149,7 +155,8 @@ const Toolbox = ({
         rounded-md
         transition-colors duration-200
         focus:outline-none focus:ring-2 focus:ring-red-300
-      ">
+      "
+        >
           Clear Canvas
         </button>
 
@@ -165,11 +172,19 @@ const Toolbox = ({
             rounded-md
             transition-colors duration-200
             focus:outline-none focus:ring-2 focus:ring-green-300
-          ">
+          "
+        >
           Explain with AI
         </button>
-        <div className="absolute top-5 right-20 text-white text-lg font-semibold">
-          Room: {roomCode}
+        <div className="absolute top-2 right-20 text-white text-md font-semibold">
+          <div className="flex gap-4">
+            <h4 className="text-gray-300">User: </h4>
+            <span>{localStorage.getItem("userName") || "Guest"}</span>
+          </div>
+          <div className="flex gap-2">
+            <h4 className="text-gray-300">Room: </h4>
+            <span>{roomCode}</span>
+          </div>
         </div>
 
         {/* Logout Button */}
@@ -179,7 +194,8 @@ const Toolbox = ({
             localStorage.removeItem("roomCode");
             window.location.href = "/";
           }}
-          className="fa-solid fa-right-from-bracket absolute top-3.5 right-6 bg-amber-500 text-white font-semibold px-3 py-3 rounded-md shadow-md hover:bg-amber-600 transition-all z-50 cursor-pointer"></button>
+          className="fa-solid fa-right-from-bracket absolute top-3.5 right-6 bg-amber-500 text-white font-semibold px-3 py-3 rounded-md shadow-md hover:bg-amber-600 transition-all z-50 cursor-pointer"
+        ></button>
       </div>
     </div>
   );
