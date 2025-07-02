@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router";
+import { UserContext } from "../Context/User-Context";
 
 const HomePage = () => {
-  const [userName, setUserName] = useState("");
+  const { userName, setUserName } = useContext(UserContext);
   const [name, setName] = useState("");
   const navigate = useNavigate();
   console.log("userName", userName);
@@ -41,12 +42,14 @@ const HomePage = () => {
         <div className="flex justify-center gap-4">
           <button
             onClick={handleSubmitCreateRoom}
-            className="bg-amber-300 hover:bg-amber-400 px-4 py-2 rounded-md text-white font-semibold transition cursor-pointer">
+            className="bg-amber-300 hover:bg-amber-400 px-4 py-2 rounded-md text-white font-semibold transition cursor-pointer"
+          >
             Create Room
           </button>
           <button
             onClick={handleSubmitJoinRoom}
-            className="bg-green-500 hover:bg-green-600 px-4 py-2 rounded-md text-white font-semibold transition cursor-pointer">
+            className="bg-green-500 hover:bg-green-600 px-4 py-2 rounded-md text-white font-semibold transition cursor-pointer"
+          >
             Join Room
           </button>
         </div>

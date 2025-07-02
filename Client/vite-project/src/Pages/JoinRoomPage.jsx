@@ -1,18 +1,12 @@
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router";
+import { UserContext } from "../Context/User-Context";
 
 const JoinRoom = () => {
   const [code, setCode] = useState("");
   const navigate = useNavigate();
-  const [userName, setUserName] = useState("");
-
-  useEffect(() => {
-    const savedName = localStorage.getItem("userName");
-    if (savedName) {
-      setUserName(savedName);
-    }
-  }, []);
+  const { userName } = useContext(UserContext);
 
   const handleJoin = () => {
     if (!code.trim()) return;
@@ -35,7 +29,8 @@ const JoinRoom = () => {
 
         <button
           onClick={handleJoin}
-          className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-4 py-2 rounded-md transition duration-200 shadow cursor-pointer">
+          className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-4 py-2 rounded-md transition duration-200 shadow cursor-pointer"
+        >
           Join
         </button>
       </div>

@@ -1,17 +1,11 @@
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router";
+import { UserContext } from "../Context/User-Context";
 
 const CreateRoom = () => {
   const navigate = useNavigate();
-  const [userName, setUserName] = useState("");
-
-  useEffect(() => {
-    const savedName = localStorage.getItem("userName");
-    if (savedName) {
-      setUserName(savedName);
-    }
-  }, []);
+  const { userName } = useContext(UserContext);
 
   const roomCode = Math.random().toString(36).substring(2, 8);
   localStorage.setItem("roomCode", roomCode);
@@ -28,7 +22,8 @@ const CreateRoom = () => {
         <div className="font-bold text-xl mb-4">{roomCode}</div>
         <button
           onClick={handleEnter}
-          className="bg-green-500 hover:bg-green-600 px-4 py-2 text-white rounded cursor-pointer">
+          className="bg-green-500 hover:bg-green-600 px-4 py-2 text-white rounded cursor-pointer"
+        >
           Enter the room
         </button>
       </div>
