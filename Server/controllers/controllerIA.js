@@ -4,7 +4,7 @@ require("dotenv").config();
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
 class ControllerIAGemini {
-  static async explainWhiteboard(req, res, next) {
+  static async explainWhiteboard(req, res) {
     try {
       const { imageBase64 } = req.body;
       console.log(
@@ -40,7 +40,10 @@ class ControllerIAGemini {
       });
     } catch (error) {
       console.error("AI error:", error.message);
-      next(error);
+      res.status(500).json({
+        message: "Failed to generate whiteboard explanation",
+        error: error.message,
+      });
     }
   }
 }
