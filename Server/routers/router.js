@@ -4,4 +4,8 @@ const router = express.Router();
 
 router.post("/explain", ControllerIAGemini.explainWhiteboard);
 
+app.get("/", (req, res) => {
+  res.send("Socket server is running ✅");
+});
+
 module.exports = router;
