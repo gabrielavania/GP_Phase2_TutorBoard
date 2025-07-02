@@ -17,6 +17,10 @@ const WhiteboardPage = () => {
 
   const clearCanvas = () => {
     setCurrentLines([]);
+
+    if (socketRef.current && roomCode) {
+      socketRef.current.emit("clear-canvas", roomCode);
+    }
   };
 
   useEffect(() => {
@@ -27,7 +31,11 @@ const WhiteboardPage = () => {
     socketRef.current.emit("join-room", { roomCode, userName });
 
     socketRef.current.on("draw-data", (data) => {
-      setLines((prev) => [...prev, data]);
+      setCurrentLines((prev) => [...prev, data]);
+    });
+
+    socketRef.current.on("clear-canvas", () => {
+      setCurrentLines([]);
     });
 
     return () => {
@@ -52,6 +60,8 @@ const WhiteboardPage = () => {
         strokeWidth={currentStrokeWidth}
         lines={currentLines}
         setLines={setCurrentLines}
+        socket={socketRef.current}
+        roomCode={roomCode}
       />
     </div>
   );

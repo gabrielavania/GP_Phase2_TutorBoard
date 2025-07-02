@@ -1,7 +1,15 @@
-import React, { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Stage, Layer, Line, Rect, Circle } from "react-konva";
 
-const Whiteboard = ({ tool, color, strokeWidth, lines, setLines }) => {
+const Whiteboard = ({
+  tool,
+  color,
+  strokeWidth,
+  lines,
+  setLines,
+  socket,
+  roomCode,
+}) => {
   const [currentShape, setCurrentShape] = useState(null);
   const isDrawing = useRef(false);
   const stageRef = useRef(null);
@@ -86,12 +94,24 @@ const Whiteboard = ({ tool, color, strokeWidth, lines, setLines }) => {
 
   const handleMouseUp = () => {
     isDrawing.current = false;
+
     if (currentShape) {
-      setLines([...lines, currentShape]);
+      const updatedLines = [...lines, currentShape];
+      setLines(updatedLines);
+
+      // Emit ke socket
+      if (socket && roomCode) {
+        socket.emit("draw-data", { roomCode, data: currentShape });
+      }
+
       setCurrentShape(null);
+    } else if ((tool === "brush" || tool === "eraser") && lines.length > 0) {
+      const lastLine = lines[lines.length - 1];
+      if (socket && roomCode) {
+        socket.emit("draw-data", { roomCode, data: lastLine });
+      }
     }
   };
-
   return (
     <div
       ref={containerRef}
@@ -101,7 +121,8 @@ const Whiteboard = ({ tool, color, strokeWidth, lines, setLines }) => {
         flex justify-center items-center
         bg-gray-50
         overflow-hidden
-      ">
+      "
+    >
       <Stage
         width={containerSize.width ? containerSize.width * 0.95 : 0}
         height={containerSize.height ? containerSize.height * 0.95 : 0}
@@ -116,7 +137,8 @@ const Whiteboard = ({ tool, color, strokeWidth, lines, setLines }) => {
           bg-gradient-to-br from-white to-gray-50
           border border-gray-200
           rounded-lg shadow-xl
-        ">
+        "
+      >
         <Layer>
           {lines.map((shape, i) => {
             if (shape.tool === "brush" || shape.tool === "eraser") {
