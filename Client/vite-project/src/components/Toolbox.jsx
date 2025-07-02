@@ -16,6 +16,7 @@ const Toolbox = ({
   onExplain,
   strokeWidth,
   setStrokeWidth,
+  roomCode,
 }) => {
   return (
     <div
@@ -184,6 +185,18 @@ const Toolbox = ({
         >
           Explain with AI
         </button>
+        <div className="absolute top-5 right-20 text-white text-lg font-semibold">
+          Room: {roomCode}
+        </div>
+
+        {/* Logout Button */}
+        <button
+          onClick={() => {
+            localStorage.removeItem("userName");
+            localStorage.removeItem("roomCode");
+            window.location.href = "/";
+          }}
+          className="fa-solid fa-right-from-bracket absolute top-3.5 right-6 bg-red-500 text-white font-semibold px-3 py-3 rounded-md shadow-md hover:bg-red-600 transition-all z-50 cursor-pointer"></button>
       </div>
     </div>
   );
