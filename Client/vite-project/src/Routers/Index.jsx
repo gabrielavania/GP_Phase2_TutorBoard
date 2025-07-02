@@ -2,7 +2,7 @@ import { createBrowserRouter, redirect } from "react-router";
 import HomePage from "../Pages/HomePage";
 import CreateRoom from "../Pages/CreateRoomPage";
 import JoinRoom from "../Pages/JoinRoomPage";
-import WhiteboardRoom from "../Pages/WhiteboardPage";
+import WhiteboardPage from "../Pages/WhiteboardPage";
 
 const routers = createBrowserRouter([
   {
@@ -31,9 +31,9 @@ const routers = createBrowserRouter([
   },
   {
     path: "/room/:roomCode",
-    element: <WhiteboardRoom />,
+    element: <WhiteboardPage />,
     loader: () => {
-      if (!localStorage.userName || !localStorage.roomCode) {
+      if (!localStorage.userName) {
         return redirect("/");
       }
       return null;

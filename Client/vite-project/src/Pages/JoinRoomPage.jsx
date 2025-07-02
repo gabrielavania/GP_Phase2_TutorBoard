@@ -20,20 +20,25 @@ const JoinRoom = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen gap-4">
-      <h2 className="text-2xl">Hallo, {userName}!</h2>
-      <input
-        className="border p-2 rounded"
-        value={code}
-        onChange={(e) => setCode(e.target.value)}
-        placeholder="Enter the room code"
-      />
-      <button
-        onClick={handleJoin}
-        className="bg-blue-500 px-4 py-2 text-white rounded"
-      >
-        Join
-      </button>
+    <div className="bg-[url(/BG2.jpg)] bg-cover bg-center min-h-screen flex items-center justify-center">
+      <div className="bg-white bg-opacity-90 rounded-xl shadow-xl p-10 w-[90%] max-w-md text-center space-y-6">
+        <h2 className="text-2xl font-semibold text-gray-800">
+          Hallo, {userName}!
+        </h2>
+
+        <input
+          className="border border-gray-300 p-3 w-full rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+          value={code}
+          onChange={(e) => setCode(e.target.value)}
+          placeholder="Enter the room code"
+        />
+
+        <button
+          onClick={handleJoin}
+          className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-4 py-2 rounded-md transition duration-200 shadow">
+          Join
+        </button>
+      </div>
     </div>
   );
 };

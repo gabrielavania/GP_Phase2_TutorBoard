@@ -1,6 +1,4 @@
-import { useRef } from "react";
-import { useEffect } from "react";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router";
 import { io } from "socket.io-client";
 import Toolbox from "../components/Toolbox";
@@ -8,7 +6,7 @@ import Whiteboard from "../components/Whiteboard";
 
 const socket = io("http://localhost:3000");
 
-const WhiteboardRoom = () => {
+const WhiteboardPage = () => {
   const { roomCode } = useParams();
   const userName = localStorage.getItem("userName");
   const [currentTool, setCurrentTool] = useState("brush");
@@ -69,4 +67,4 @@ const WhiteboardRoom = () => {
   );
 };
 
-export default WhiteboardRoom;
+export default WhiteboardPage;
