@@ -15,6 +15,8 @@ const routers = createBrowserRouter([
     loader: () => {
       if (!localStorage.userName) {
         return redirect("/");
+      } else if (localStorage.roomCode) {
+        return redirect(`/room/${localStorage.roomCode}`);
       }
       return null;
     },
@@ -25,6 +27,8 @@ const routers = createBrowserRouter([
     loader: () => {
       if (!localStorage.userName) {
         return redirect("/");
+      } else if (localStorage.roomCode) {
+        return redirect(`/room/${localStorage.roomCode}`);
       }
       return null;
     },
