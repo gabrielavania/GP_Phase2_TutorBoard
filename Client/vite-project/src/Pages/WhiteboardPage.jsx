@@ -53,6 +53,7 @@ const WhiteboardPage = () => {
         strokeWidth={currentStrokeWidth}
         setStrokeWidth={setCurrentStrokeWidth}
         onClear={clearCanvas}
+        roomCode={localStorage.getItem("roomCode")}
       />
       <Whiteboard
         tool={currentTool}

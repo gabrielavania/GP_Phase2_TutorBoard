@@ -14,6 +14,7 @@ const Toolbox = ({
   onClear,
   strokeWidth,
   setStrokeWidth,
+  roomCode,
 }) => {
   return (
     <div
@@ -167,6 +168,10 @@ const Toolbox = ({
           ">
           Explain with AI
         </button>
+
+        <div className="absolute top-5 right-20 text-white text-lg font-semibold">
+          Room: {roomCode}
+        </div>
 
         {/* Logout Button */}
         <button
