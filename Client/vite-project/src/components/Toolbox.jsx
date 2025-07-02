@@ -4,7 +4,6 @@ import {
   FaEraser,
   FaRegSquare,
   FaRegCircle,
-  FaHandPaper,
 } from "react-icons/fa";
 
 const Toolbox = ({

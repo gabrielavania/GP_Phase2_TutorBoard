@@ -22,28 +22,34 @@ const HomePage = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen gap-4">
-      <h1 className="text-5xl font-bold">Welcome to TutorBoard</h1>
-      <h1 className="text-3xl font-semibold">Enter your name</h1>
-      <input
-        className="border p-2 rounded"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-        placeholder="Your Name"
-      />
-      <div className="flex justify-center gap-4 w-6/10">
-        <button
-          onClick={handleSubmitCreateRoom}
-          className="bg-yellow-500 px-4 py-2 rounded text-white w-2/10"
-        >
-          Create Room
-        </button>
-        <button
-          onClick={handleSubmitJoinRoom}
-          className="bg-green-500 px-4 py-2 rounded text-white mr-2 w-2/10"
-        >
-          Join Room
-        </button>
+    <div className="bg-[url(/BG2.jpg)] bg-cover bg-center min-h-screen flex items-center justify-center">
+      <div className="bg-white bg-opacity-90 rounded-xl shadow-xl p-10 w-[90%] max-w-md text-center">
+        <h1 className="text-4xl font-bold mb-4 text-gray-800">
+          Welcome to TutorBoard
+        </h1>
+        <h2 className="text-xl mb-6 text-gray-600">
+          Enter your name to get started
+        </h2>
+
+        <input
+          className="w-full border border-gray-300 p-3 rounded-md mb-4 focus:outline-none focus:ring-2 focus:ring-blue-400"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          placeholder="Your Name"
+        />
+
+        <div className="flex justify-center gap-4">
+          <button
+            onClick={handleSubmitCreateRoom}
+            className="bg-yellow-500 hover:bg-yellow-600 px-4 py-2 rounded-md text-white font-semibold transition">
+            Create Room
+          </button>
+          <button
+            onClick={handleSubmitJoinRoom}
+            className="bg-green-500 hover:bg-green-600 px-4 py-2 rounded-md text-white font-semibold transition">
+            Join Room
+          </button>
+        </div>
       </div>
     </div>
   );

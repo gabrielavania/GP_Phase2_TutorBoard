@@ -2,6 +2,7 @@ import { createBrowserRouter, redirect } from "react-router";
 import HomePage from "../Pages/HomePage";
 import CreateRoom from "../Pages/CreateRoomPage";
 import JoinRoom from "../Pages/JoinRoomPage";
+import WhiteboardPage from "../Pages/WhiteboardPage";
 
 const routers = createBrowserRouter([
   {
@@ -21,6 +22,16 @@ const routers = createBrowserRouter([
   {
     path: "/room/join",
     element: <JoinRoom />,
+    loader: () => {
+      if (!localStorage.userName) {
+        return redirect("/");
+      }
+      return null;
+    },
+  },
+  {
+    path: "/room/:roomCode",
+    element: <WhiteboardPage />,
     loader: () => {
       if (!localStorage.userName) {
         return redirect("/");

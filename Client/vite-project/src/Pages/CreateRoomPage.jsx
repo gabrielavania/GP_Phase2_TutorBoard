@@ -21,16 +21,17 @@ const CreateRoom = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen gap-4">
-      <h2 className="text-2xl">Hallo, {userName}!</h2>
-      <p className="text-lg">Your Room Code:</p>
-      <div className="font-bold text-xl">{roomCode}</div>
-      <button
-        onClick={handleEnter}
-        className="bg-green-500 px-4 py-2 text-white rounded"
-      >
-        Enter the room
-      </button>
+    <div className="bg-[url(/BG2.jpg)] bg-cover bg-center min-h-screen flex items-center justify-center">
+      <div className="bg-white bg-opacity-90 rounded-xl shadow-xl p-10 w-[90%] max-w-md text-center">
+        <h2 className="text-2xl font-semibold mb-4">Hallo, {userName}!</h2>
+        <p className="text-lg">Your Room Code:</p>
+        <div className="font-bold text-xl mb-4">{roomCode}</div>
+        <button
+          onClick={handleEnter}
+          className="bg-green-500 px-4 py-2 text-white rounded">
+          Enter the room
+        </button>
+      </div>
     </div>
   );
 };
