@@ -28,7 +28,7 @@ const CreateRoom = () => {
         <div className="font-bold text-xl mb-4">{roomCode}</div>
         <button
           onClick={handleEnter}
-          className="bg-green-500 px-4 py-2 text-white rounded cursor-pointer">
+          className="bg-green-500 hover:bg-green-600 px-4 py-2 text-white rounded cursor-pointer">
           Enter the room
         </button>
       </div>

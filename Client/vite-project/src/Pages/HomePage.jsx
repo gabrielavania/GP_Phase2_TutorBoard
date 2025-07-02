@@ -41,7 +41,7 @@ const HomePage = () => {
         <div className="flex justify-center gap-4">
           <button
             onClick={handleSubmitCreateRoom}
-            className="bg-yellow-500 hover:bg-yellow-600 px-4 py-2 rounded-md text-white font-semibold transition cursor-pointer">
+            className="bg-amber-300 hover:bg-amber-400 px-4 py-2 rounded-md text-white font-semibold transition cursor-pointer">
             Create Room
           </button>
           <button
