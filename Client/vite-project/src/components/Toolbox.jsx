@@ -30,7 +30,8 @@ const Toolbox = ({
       z-20
       flex-wrap
       px-6 py-3
-    ">
+    "
+    >
       <div className="flex items-center space-x-2">
         <label className="text-white font-semibold text-lg">Size:</label>
         <input
@@ -53,7 +54,8 @@ const Toolbox = ({
             transition-colors duration-200
             focus:outline-none focus:ring-2 focus:ring-blue-300
           `}
-          title="Brush">
+          title="Brush"
+        >
           <FaPaintBrush size={20} />
         </button>
 
@@ -69,7 +71,8 @@ const Toolbox = ({
             transition-colors duration-200
             focus:outline-none focus:ring-2 focus:ring-blue-300
           `}
-          title="Eraser">
+          title="Eraser"
+        >
           <FaEraser size={20} />
         </button>
 
@@ -85,7 +88,8 @@ const Toolbox = ({
             transition-colors duration-200
             focus:outline-none focus:ring-2 focus:ring-blue-300
           `}
-          title="Rectangle">
+          title="Rectangle"
+        >
           <FaRegSquare size={20} />
         </button>
 
@@ -101,7 +105,8 @@ const Toolbox = ({
             transition-colors duration-200
             focus:outline-none focus:ring-2 focus:ring-blue-300
           `}
-          title="Circle">
+          title="Circle"
+        >
           <FaRegCircle size={20} />
         </button>
 
@@ -129,7 +134,8 @@ const Toolbox = ({
           text-white
           font-semibold
           text-lg
-        ">
+        "
+        >
           Color:
         </label>
         <input
@@ -157,7 +163,8 @@ const Toolbox = ({
         rounded-md
         transition-colors duration-200
         focus:outline-none focus:ring-2 focus:ring-red-300
-      ">
+      "
+        >
           Clear Canvas
         </button>
 
@@ -171,7 +178,8 @@ const Toolbox = ({
             rounded-md
             transition-colors duration-200
             focus:outline-none focus:ring-2 focus:ring-green-300
-          ">
+          "
+        >
           Explain with AI
         </button>
       </div>
