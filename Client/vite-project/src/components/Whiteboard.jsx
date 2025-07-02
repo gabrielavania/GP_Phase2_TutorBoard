@@ -7,12 +7,12 @@ const Whiteboard = ({
   strokeWidth,
   lines,
   setLines,
+  stageRef,
   socket,
   roomCode,
 }) => {
   const [currentShape, setCurrentShape] = useState(null);
   const isDrawing = useRef(false);
-  const stageRef = useRef(null);
 
   const [containerSize, setContainerSize] = useState({ width: 0, height: 0 });
   const containerRef = useRef(null);
@@ -122,7 +122,8 @@ const Whiteboard = ({
       bg-gray-50
       overflow-hidden
       relative
-    ">
+    "
+    >
       <Stage
         width={containerSize.width ? containerSize.width * 0.95 : 0}
         height={containerSize.height ? containerSize.height * 0.95 : 0}
@@ -137,7 +138,8 @@ const Whiteboard = ({
           bg-gradient-to-br from-white to-gray-50
           border border-gray-200
           rounded-lg shadow-xl
-        ">
+        "
+      >
         <Layer>
           {lines.map((shape, i) => {
             if (shape.tool === "brush" || shape.tool === "eraser") {

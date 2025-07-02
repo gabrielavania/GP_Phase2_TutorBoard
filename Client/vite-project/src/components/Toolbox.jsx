@@ -4,6 +4,7 @@ import {
   FaEraser,
   FaRegSquare,
   FaRegCircle,
+  FaHandPaper,
 } from "react-icons/fa";
 
 const Toolbox = ({
@@ -12,6 +13,7 @@ const Toolbox = ({
   color,
   setColor,
   onClear,
+  onExplain,
   strokeWidth,
   setStrokeWidth,
 }) => {
@@ -29,10 +31,8 @@ const Toolbox = ({
       z-20
       flex-wrap
       px-6 py-3
-    ">
-      <h1 className="text-white font-bold text-2xl absolute left-4">
-        TutorBoard
-      </h1>
+    "
+    >
       <div className="flex items-center space-x-2">
         <label className="text-white font-semibold text-lg">Size:</label>
         <input
@@ -46,7 +46,6 @@ const Toolbox = ({
         <button
           onClick={() => setTool("brush")}
           className={`
-            cursor-pointer
             p-3 rounded-full
             ${
               tool === "brush"
@@ -56,14 +55,14 @@ const Toolbox = ({
             transition-colors duration-200
             focus:outline-none focus:ring-2 focus:ring-blue-300
           `}
-          title="Brush">
+          title="Brush"
+        >
           <FaPaintBrush size={20} />
         </button>
 
         <button
           onClick={() => setTool("eraser")}
           className={`
-            cursor-pointer
             p-3 rounded-full
             ${
               tool === "eraser"
@@ -73,7 +72,8 @@ const Toolbox = ({
             transition-colors duration-200
             focus:outline-none focus:ring-2 focus:ring-blue-300
           `}
-          title="Eraser">
+          title="Eraser"
+        >
           <FaEraser size={20} />
         </button>
 
@@ -88,9 +88,9 @@ const Toolbox = ({
             }
             transition-colors duration-200
             focus:outline-none focus:ring-2 focus:ring-blue-300
-            cursor-pointer
           `}
-          title="Rectangle">
+          title="Rectangle"
+        >
           <FaRegSquare size={20} />
         </button>
 
@@ -105,11 +105,27 @@ const Toolbox = ({
             }
             transition-colors duration-200
             focus:outline-none focus:ring-2 focus:ring-blue-300
-            cursor-pointer
           `}
-          title="Circle">
+          title="Circle"
+        >
           <FaRegCircle size={20} />
         </button>
+
+        {/* <button
+          onClick={() => setTool("pan")}
+          className={`
+            p-3 rounded-full
+            ${
+              tool === "pan"
+                ? "bg-blue-300 text-blue-900"
+                : "bg-blue-700 text-white hover:bg-blue-600"
+            }
+            transition-colors duration-200
+            focus:outline-none focus:ring-2 focus:ring-blue-300
+          `}
+          title="Pan">
+          <FaHandPaper size={20} />
+        </button> */}
       </div>
 
       <div className="flex items-center space-x-2">
@@ -119,8 +135,8 @@ const Toolbox = ({
           text-white
           font-semibold
           text-lg
-          cursor-pointer
-        ">
+        "
+        >
           Color:
         </label>
         <input
@@ -130,8 +146,8 @@ const Toolbox = ({
           onChange={(e) => setColor(e.target.value)}
           className="
             w-10 h-10
-            overflow-hidden 
             cursor-pointer
+            overflow-hidden 
           "
         />
       </div>
@@ -140,20 +156,21 @@ const Toolbox = ({
         <button
           onClick={onClear}
           className="
-        bg-amber-500
-        hover:bg-amber-600
+        bg-red-500
+        hover:bg-red-600
         text-white
         font-bold
         py-2 px-4
         rounded-md
         transition-colors duration-200
         focus:outline-none focus:ring-2 focus:ring-red-300
-        cursor-pointer
-      ">
+      "
+        >
           Clear Canvas
         </button>
 
         <button
+          onClick={onExplain}
           className="
             bg-green-500
             hover:bg-green-600
@@ -163,19 +180,10 @@ const Toolbox = ({
             rounded-md
             transition-colors duration-200
             focus:outline-none focus:ring-2 focus:ring-green-300
-            cursor-pointer
-          ">
+          "
+        >
           Explain with AI
         </button>
-
-        {/* Logout Button */}
-        <button
-          onClick={() => {
-            localStorage.removeItem("userName");
-            localStorage.removeItem("roomCode");
-            window.location.href = "/";
-          }}
-          className="fa-solid fa-right-from-bracket absolute top-3.5 right-6 bg-red-500 text-white font-semibold px-3 py-3 rounded-md shadow-md hover:bg-red-600 transition-all z-50 cursor-pointer"></button>
       </div>
     </div>
   );

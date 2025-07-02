@@ -32,6 +32,10 @@ function initSocket(server) {
       socket.to(roomCode).emit("clear-canvas");
     });
 
+    socket.on("ai-result", ({ roomCode, explanation }) => {
+      io.to(roomCode).emit("ai-result", { explanation });
+    });
+
     socket.on("disconnect", () => {
       for (let [roomCode, socketSet] of rooms.entries()) {
         socketSet.delete(socket.id);
