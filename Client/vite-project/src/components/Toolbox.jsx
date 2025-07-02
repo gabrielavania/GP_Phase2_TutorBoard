@@ -3,7 +3,6 @@ import {
   FaEraser,
   FaRegSquare,
   FaRegCircle,
-  FaHandPaper,
 } from "react-icons/fa";
 
 const Toolbox = ({
@@ -31,9 +30,11 @@ const Toolbox = ({
       z-20
       flex-wrap
       px-6 py-3
-    "
-    >
+    ">
       <div className="flex items-center space-x-2">
+        <div className="absolute top-5 left-4 text-white text-2xl font-semibold">
+          TutorBoard
+        </div>
         <label className="text-white font-semibold text-lg">Size:</label>
         <input
           type="range"
@@ -54,15 +55,16 @@ const Toolbox = ({
             }
             transition-colors duration-200
             focus:outline-none focus:ring-2 focus:ring-blue-300
+            cursor-pointer
           `}
-          title="Brush"
-        >
+          title="Brush">
           <FaPaintBrush size={20} />
         </button>
 
         <button
           onClick={() => setTool("eraser")}
           className={`
+            cursor-pointer
             p-3 rounded-full
             ${
               tool === "eraser"
@@ -72,14 +74,14 @@ const Toolbox = ({
             transition-colors duration-200
             focus:outline-none focus:ring-2 focus:ring-blue-300
           `}
-          title="Eraser"
-        >
+          title="Eraser">
           <FaEraser size={20} />
         </button>
 
         <button
           onClick={() => setTool("rectangle")}
           className={`
+            cursor-pointer
             p-3 rounded-full
             ${
               tool === "rectangle"
@@ -89,14 +91,14 @@ const Toolbox = ({
             transition-colors duration-200
             focus:outline-none focus:ring-2 focus:ring-blue-300
           `}
-          title="Rectangle"
-        >
+          title="Rectangle">
           <FaRegSquare size={20} />
         </button>
 
         <button
           onClick={() => setTool("circle")}
           className={`
+            cursor-pointer
             p-3 rounded-full
             ${
               tool === "circle"
@@ -106,26 +108,9 @@ const Toolbox = ({
             transition-colors duration-200
             focus:outline-none focus:ring-2 focus:ring-blue-300
           `}
-          title="Circle"
-        >
+          title="Circle">
           <FaRegCircle size={20} />
         </button>
-
-        {/* <button
-          onClick={() => setTool("pan")}
-          className={`
-            p-3 rounded-full
-            ${
-              tool === "pan"
-                ? "bg-blue-300 text-blue-900"
-                : "bg-blue-700 text-white hover:bg-blue-600"
-            }
-            transition-colors duration-200
-            focus:outline-none focus:ring-2 focus:ring-blue-300
-          `}
-          title="Pan">
-          <FaHandPaper size={20} />
-        </button> */}
       </div>
 
       <div className="flex items-center space-x-2">
@@ -135,8 +120,7 @@ const Toolbox = ({
           text-white
           font-semibold
           text-lg
-        "
-        >
+        ">
           Color:
         </label>
         <input
@@ -156,6 +140,7 @@ const Toolbox = ({
         <button
           onClick={onClear}
           className="
+          cursor-pointer
         bg-red-500
         hover:bg-red-600
         text-white
@@ -164,14 +149,14 @@ const Toolbox = ({
         rounded-md
         transition-colors duration-200
         focus:outline-none focus:ring-2 focus:ring-red-300
-      "
-        >
+      ">
           Clear Canvas
         </button>
 
         <button
           onClick={onExplain}
           className="
+          cursor-pointer
             bg-green-500
             hover:bg-green-600
             text-white
@@ -180,8 +165,7 @@ const Toolbox = ({
             rounded-md
             transition-colors duration-200
             focus:outline-none focus:ring-2 focus:ring-green-300
-          "
-        >
+          ">
           Explain with AI
         </button>
         <div className="absolute top-5 right-20 text-white text-lg font-semibold">
@@ -195,7 +179,7 @@ const Toolbox = ({
             localStorage.removeItem("roomCode");
             window.location.href = "/";
           }}
-          className="fa-solid fa-right-from-bracket absolute top-3.5 right-6 bg-red-500 text-white font-semibold px-3 py-3 rounded-md shadow-md hover:bg-red-600 transition-all z-50 cursor-pointer"></button>
+          className="fa-solid fa-right-from-bracket absolute top-3.5 right-6 bg-amber-500 text-white font-semibold px-3 py-3 rounded-md shadow-md hover:bg-amber-600 transition-all z-50 cursor-pointer"></button>
       </div>
     </div>
   );
