@@ -27,6 +27,11 @@ function initSocket(server) {
       socket.to(roomCode).emit("draw-data", data);
     });
 
+    socket.on("clear-canvas", (roomCode) => {
+      console.log(`Clear canvas in room ${roomCode}`);
+      socket.to(roomCode).emit("clear-canvas");
+    });
+
     socket.on("disconnect", () => {
       for (let [roomCode, socketSet] of rooms.entries()) {
         socketSet.delete(socket.id);

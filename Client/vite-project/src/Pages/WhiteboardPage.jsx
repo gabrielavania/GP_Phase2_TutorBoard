@@ -1,9 +1,14 @@
+import { useRef } from "react";
+import { useEffect } from "react";
 import { useState } from "react";
+import { useParams } from "react-router";
 import { io } from "socket.io-client";
+import Toolbox from "../components/Toolbox";
+import Whiteboard from "../components/Whiteboard";
 
 const socket = io("http://localhost:3000");
 
-const whiteboardPage = () => {
+const WhiteboardRoom = () => {
   const { roomCode } = useParams();
   const userName = localStorage.getItem("userName");
   const [currentTool, setCurrentTool] = useState("brush");
@@ -14,6 +19,10 @@ const whiteboardPage = () => {
 
   const clearCanvas = () => {
     setCurrentLines([]);
+
+    if (socketRef.current && roomCode) {
+      socketRef.current.emit("clear-canvas", roomCode);
+    }
   };
 
   useEffect(() => {
@@ -24,7 +33,11 @@ const whiteboardPage = () => {
     socketRef.current.emit("join-room", { roomCode, userName });
 
     socketRef.current.on("draw-data", (data) => {
-      setLines((prev) => [...prev, data]);
+      setCurrentLines((prev) => [...prev, data]);
+    });
+
+    socketRef.current.on("clear-canvas", () => {
+      setCurrentLines([]);
     });
 
     return () => {
@@ -49,9 +62,11 @@ const whiteboardPage = () => {
         strokeWidth={currentStrokeWidth}
         lines={currentLines}
         setLines={setCurrentLines}
+        socket={socketRef.current}
+        roomCode={roomCode}
       />
     </div>
   );
 };
 
-export default whiteboardPage;
+export default WhiteboardRoom;
