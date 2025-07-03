@@ -32,7 +32,7 @@ const WhiteboardPage = () => {
     const imageBase64 = stageRef.current.toDataURL();
     console.log("Sending image data for AI explanation:", imageBase64);
     try {
-      const res = await fetch("http://3.1.202.39:3000/explain", {
+      const res = await fetch("https://api.vngbr.web.id/explain", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ imageBase64, roomCode }),
@@ -51,7 +51,7 @@ const WhiteboardPage = () => {
   };
 
   useEffect(() => {
-    socketRef.current = io("http://3.1.202.39:3000", {
+    socketRef.current = io("https://api.vngbr.web.id", {
       withCredentials: true,
     });
 
