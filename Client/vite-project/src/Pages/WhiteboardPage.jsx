@@ -3,8 +3,9 @@ import { useParams } from "react-router";
 import { io } from "socket.io-client";
 import Toolbox from "../components/Toolbox";
 import Whiteboard from "../components/Whiteboard";
+import { ToastContainer, toast } from "react-toastify";
 
-const socket = io("http://3.1.202.39:3000");
+const socket = io("https://api.vngbr.web.id");
 
 const WhiteboardPage = () => {
   const { roomCode } = useParams();
@@ -46,7 +47,7 @@ const WhiteboardPage = () => {
       });
     } catch (err) {
       console.error("Error explaining whiteboard:", err);
-      alert("Failed to explain whiteboard.");
+      toast.error("Failed to get AI explanation. Please try again.");
     }
   };
 
@@ -117,6 +118,18 @@ const WhiteboardPage = () => {
           </div>
         </div>
       )}
+      <ToastContainer
+        position="bottom-left"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick={false}
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
     </div>
   );
 };
