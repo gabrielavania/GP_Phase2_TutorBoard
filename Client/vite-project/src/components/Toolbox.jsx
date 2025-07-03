@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+import { ToastContainer, toast } from "react-toastify";
 import {
   FaPaintBrush,
   FaEraser,
@@ -16,6 +18,26 @@ const Toolbox = ({
   setStrokeWidth,
   roomCode,
 }) => {
+  const DEFAULT_INVALID_COLOR = "#000000";
+
+  useEffect(() => {
+    if (color === DEFAULT_INVALID_COLOR) {
+      toast.warn(
+        "AI can’t explain drawings in black. Please use another color!",
+        {
+          position: "top-center",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: false,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+        }
+      );
+    }
+  }, [color]);
+
   return (
     <div className="w-full z-20">
       {/* NAVBAR */}
@@ -23,7 +45,6 @@ const Toolbox = ({
         <div className="text-white text-2xl font-bold">TutorBoard</div>
 
         {/* User and Room Info */}
-
         <div className="flex items-center gap-6">
           {/* User Info */}
           <div className="flex items-center gap-1 text-white">
@@ -43,6 +64,7 @@ const Toolbox = ({
             <span className="font-semibold text-md">{roomCode}</span>
           </div>
 
+          {/* Logout */}
           <button
             onClick={() => {
               localStorage.removeItem("userName");
@@ -54,7 +76,7 @@ const Toolbox = ({
         </div>
       </div>
 
-      {/* 🎨 TOOLBAR */}
+      {/* TOOLBAR */}
       <div className="w-full flex justify-center py-6 px-2 mb-2 mt-4">
         <div className="w-full max-w-4xl bg-blue-700 rounded-xl shadow-md px-6 py-4 flex flex-wrap items-center justify-between gap-4">
           {/* Size */}
@@ -109,14 +131,32 @@ const Toolbox = ({
               className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-md transition-colors duration-200">
               Clear Canvas
             </button>
+
             <button
               onClick={onExplain}
-              className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-md transition-colors duration-200">
+              disabled={color === DEFAULT_INVALID_COLOR}
+              className={`${
+                color === DEFAULT_INVALID_COLOR
+                  ? "bg-gray-400 cursor-not-allowed"
+                  : "bg-green-500 hover:bg-green-600"
+              } text-white font-bold py-2 px-4 rounded-md transition-colors duration-200`}>
               Explain with AI
             </button>
           </div>
         </div>
       </div>
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick={false}
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
     </div>
   );
 };

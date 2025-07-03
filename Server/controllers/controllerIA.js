@@ -4,7 +4,7 @@ require("dotenv").config();
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
 class ControllerIAGemini {
-  static async explainWhiteboard(req, res, next) {
+  static async explainWhiteboard(req, res) {
     try {
       const { imageBase64 } = req.body;
       console.log(
