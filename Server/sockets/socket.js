@@ -5,7 +5,10 @@ const rooms = new Map();
 function initSocket(server) {
   const io = new Server(server, {
     cors: {
-      origin: ["http://localhost:5173", "https://tutor-board.vercel.app/"],
+      origin: [
+        "http://localhost:5173",
+        "https://phase2-tutor-board.vercel.app",
+      ],
       methods: ["GET", "POST"],
       credentials: true,
     },

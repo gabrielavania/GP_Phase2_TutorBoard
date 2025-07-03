@@ -1,4 +1,7 @@
-require("dotenv").config();
+if (process.env.NODE_ENV !== "production") {
+  require("dotenv").config();
+}
+
 const { createServer } = require("node:http");
 const app = require("./app");
 const initSocket = require("./sockets/socket");
