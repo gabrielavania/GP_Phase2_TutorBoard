@@ -40,7 +40,10 @@ class ControllerIAGemini {
       });
     } catch (error) {
       console.error("AI error:", error.message);
-      next(error);
+      res.status(500).json({
+        message: "Failed to generate whiteboard explanation",
+        error: error.message,
+      });
     }
   }
 }
