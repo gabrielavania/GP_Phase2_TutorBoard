@@ -120,7 +120,7 @@ const WhiteboardPage = () => {
       )}
       <ToastContainer
         position="bottom-left"
-        autoClose={5000}
+        autoClose={2000}
         hideProgressBar={false}
         newestOnTop={false}
         closeOnClick={false}
