@@ -26,7 +26,7 @@ const Toolbox = ({
         "AI can’t explain drawings in black. Please use another color!",
         {
           position: "top-center",
-          autoClose: 2000,
+          autoClose: 3000,
           hideProgressBar: false,
           closeOnClick: false,
           pauseOnHover: true,
