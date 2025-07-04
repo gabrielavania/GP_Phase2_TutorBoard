@@ -11,7 +11,7 @@ const WhiteboardPage = () => {
   const { roomCode } = useParams();
   const userName = localStorage.getItem("userName");
   const [currentTool, setCurrentTool] = useState("brush");
-  const [currentColor, setCurrentColor] = useState("#000000");
+  const [currentColor, setCurrentColor] = useState("#FF0000");
   const [currentStrokeWidth, setCurrentStrokeWidth] = useState(20);
   const [currentLines, setCurrentLines] = useState([]);
   const [aiModalOpen, setAiModalOpen] = useState(false);
